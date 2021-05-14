@@ -52,8 +52,6 @@ let cardsChosen = [];
 let cardsChosenId = [];
 let cardsWon = [];
 
-
-
 function createBoard() {
     
     cardsArray.sort((a,b)=>0.5 - Math.random());
@@ -69,6 +67,37 @@ function createBoard() {
  }
 }
 
+function checkScore(){
+
+    if(cardsWon.length === cardsArray.length/2){
+    alert("You won");
+    }
+
+}
+
+function flushChosenArray(){ 
+    cardsChosen = [];
+    cardsChosenId = [];
+}
+
+function checkMatch(){
+    console.log(cardsChosen[0] + " "+ cardsChosen[1])
+        if(cardsChosen[0] === cardsChosen[1]){
+            alert("hooray! a match is found!");
+            //console.log(cardsChosen[0].cardsChosen[1]);
+            cardsWon.push(cardsChosen[0]);
+            flushChosenArray();
+            checkScore();
+        }
+    
+        else{
+            let cards = document.querySelectorAll("img");
+            cards[cardsChosenId[0]].setAttribute('src',"images/blank.png");
+            cards[cardsChosenId[1]].setAttribute('src',"images/blank.png"); 
+            flushChosenArray();
+        }
+}
+
 function flipCard(){
     //this
     let cardId = this.getAttribute('data-id');
@@ -79,45 +108,5 @@ function flipCard(){
         setTimeout(checkMatch,1000);
     }
 }
-
-function displayCardImage(cardId){
-
-
-
-}
-
-function checkMatch(){
-console.log(cardsChosen[0] + " "+ cardsChosen[1])
-    if(cardsChosen[0] === cardsChosen[1]){
-        alert("hooray! a match is found!");
-        //console.log(cardsChosen[0].cardsChosen[1]);
-        cardsWon.push(cardsChosen[0]);
-        flushChosenArray();
-        checkScore();
-    }
-
-    else{
-        let cards = document.querySelectorAll("img");
-        cards[cardsChosenId[0]].setAttribute('src',"images/blank.png");
-        cards[cardsChosenId[1]].setAttribute('src',"images/blank.png"); 
-        flushChosenArray();
-    }
-}
-
-function flushChosenArray(){ 
-    cardsChosen = [];
-    cardsChosenId = [];
-}
-
-
-function checkScore(){
-
-    if(cardsWon.length === cardsArray.length/2){
-    alert("You won");
-    }
-
-}
-
-
 
 createBoard();
