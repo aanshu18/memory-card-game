@@ -6,17 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/game.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/card.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+
 
     </script>
 </head>
 
-<body onload="start();">
-    <header><input type="range" name="range" id="range" min="4" max="24" onchange="changeLimit();"> Cards: <span id="limitOutput"></span> Score: <span id="score">0</span> Win: <span id="win">0</span>
-        <div class="play"><input type="button" value="Let's Play" id="play" onclick="play();">
+<body>
+    <header>
+        <span class="name">Memory Card Game</span>
+        <input type="range" name="range" id="range" min="4" max="24"> Cards: <span id="limitOutput">0</span> Clicks: <span id="clicks">0</span> Score: <span id="scoreOutput">0</span> Win: <span id="win">0</span>
+        <div class="play">
+            <input type="button" value="Let's Play" id="play">
+        </div>
+        <div class="grid">
         </div>
     </header>
 

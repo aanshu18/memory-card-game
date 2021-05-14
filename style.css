@@ -1,0 +1,44 @@
+ @import url('https://fonts.googleapis.com/css?family=Muli:300,700&display=swap');
+ * {
+     box-sizing: border-box;
+ }
+ 
+@font-face {
+    font-family: myfont;
+    src: url("SpringDaily-2O1Y8.ttf");
+}
+
+ body {
+     background-color: rgb(189, 212, 87);
+     font-family: 'myfont';
+     text-align: center;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .name{
+    font-family: inherit;
+    font-size: 33px;
+    display:block;
+    margin: 25px;
+ }
+ .grid {
+    justify-content: center;
+    align-items: center;
+     display: flex;
+     flex-wrap: wrap;
+     height: 400px;
+     width: 400px;
+     margin: 15px;
+
+ }
+
+ .card {
+    height: 100px;
+    width: 80px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 5px 5px #888888;
+
+ }
