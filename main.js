@@ -48,22 +48,21 @@ const cardsArray = [{
 ];
 
 const grid = document.querySelector(".grid");
-const cardsChosen = [];
-const cardsChosenId = [];
-const cardsWon = [];
+let cardsChosen = [];
+let cardsChosenId = [];
+let cardsWon = [];
 
 
 
 function createBoard() {
     
     cardsArray.sort((a,b)=>0.5 - Math.random());
-    console.log(cardsArray);
     for (let i = 0; i < (cardsArray.length); i++) {
         let card = document.createElement("img");
         card.classList.add("card");
         card.setAttribute('src', 'images/blank.png');
         card.setAttribute('data-id',i);
-       card.addEventListener('click',flipCard);
+        card.addEventListener('click',flipCard);
         
         grid.appendChild(card);
 
@@ -71,19 +70,14 @@ function createBoard() {
 }
 
 function flipCard(){
+    //this
     let cardId = this.getAttribute('data-id');
-
-    console.log(cardId);
-
     cardsChosen.push(cardsArray[cardId].name);
     cardsChosenId.push(cardId);
     this.setAttribute('src',cardsArray[cardId].img);
     if(cardsChosen.length === 2){
-        setInterval(checkMatch(),500);
+        setTimeout(checkMatch,1000);
     }
-
-
-
 }
 
 function displayCardImage(cardId){
@@ -93,33 +87,37 @@ function displayCardImage(cardId){
 }
 
 function checkMatch(){
-
-    if(cardsChosen[0] == cardsChosen[1]){
-            cardsWon.push(cardsChosen[0]);
+console.log(cardsChosen[0] + " "+ cardsChosen[1])
+    if(cardsChosen[0] === cardsChosen[1]){
+        alert("hooray! a match is found!");
+        //console.log(cardsChosen[0].cardsChosen[1]);
+        cardsWon.push(cardsChosen[0]);
+        flushChosenArray();
+        checkScore();
     }
 
     else{
-    //unflip both cards back to covered face
-
-
+        let cards = document.querySelectorAll("img");
+        cards[cardsChosenId[0]].setAttribute('src',"images/blank.png");
+        cards[cardsChosenId[1]].setAttribute('src',"images/blank.png"); 
+        flushChosenArray();
     }
-   //checkScore();
+}
+
+function flushChosenArray(){ 
+    cardsChosen = [];
+    cardsChosenId = [];
 }
 
 
 function checkScore(){
 
-    if(cardsWon.length === cardsArray.length){
-
-
+    if(cardsWon.length === cardsArray.length/2){
+    alert("You won");
     }
 
 }
-//unflip
-//checl result 
-//random input 
-//flip cards
-//calculate and display score
+
 
 
 createBoard();
